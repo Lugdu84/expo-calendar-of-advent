@@ -2,13 +2,12 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import React from 'react';
 
 type DayListItemProps = {
-	item: number;
+	day: number;
 };
-export default function DayListItem({ item }: DayListItemProps) {
-	const days = [...Array(24)].map((_, i) => i + 1);
+export default function DayListItem({ day }: DayListItemProps) {
 	return (
 		<View style={styles.box}>
-			<Text style={styles.text}>{item}</Text>
+			<Text style={styles.text}>{day}</Text>
 		</View>
 	);
 }
