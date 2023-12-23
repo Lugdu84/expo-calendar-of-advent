@@ -13,22 +13,6 @@ import { useEffect } from 'react';
 const days = [...Array(24)].map((_, i) => i + 1);
 
 export default function HomeScreen() {
-	const [fontLoaded, fontError] = useFonts({
-		AmaticBold: AmaticSC_700Bold,
-		Amatic: AmaticSC_400Regular,
-		Inter: Inter_900Black,
-	});
-
-	useEffect(() => {
-		if (fontLoaded || fontError) {
-			SplashScreen.hideAsync();
-		}
-	}, [fontLoaded, fontError]);
-
-	if (!fontLoaded && !fontError) {
-		return null;
-	}
-
 	return (
 		<View style={styles.container}>
 			<FlatList
