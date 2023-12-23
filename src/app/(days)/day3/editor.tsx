@@ -1,47 +1,68 @@
 import MarkdownDisplay from '@/components/markdown/MarkdownDisplay';
+import { Stack } from 'expo-router';
+import { useState } from 'react';
+import { View, StyleSheet, TextInput, Text, Pressable } from 'react-native';
 
-const copy = `# h1 Heading 8-)
-
-## h2 Heading
-
-### h3 Heading avec un long titre qui est même plus long que le titre précédent
-
-This is normal text lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem,
-quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
-
-List :
-- item 1
-- item 2
-- item 3
-
-> Blockquote
-
-List orderer :
-1. item 1
-2. item 2
-3. item 3
-
-- To add an image: ![alt text](https://www.radiofrance.fr/s3/cruiser-production/2021/11/583b3917-c531-4786-8170-9ce8b1d1a81a/870x489_gettyimages-1265067608.jpg)
-- To add a link: [Devaidaya](https://devaidaya.fr)
-
-### h3 Heading avec un long titre qui est même plus long que le titre précédent
-
-This is normal text lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem,
-quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
-
-List :
-- item 1
-- item 2
-- item 3
-
-> Blockquote
-
-List orderer :
-1. item 1
-2. item 2
-3. item 3
+const template = `# Mardown Editor
+Hello **world**!
 `;
-
 export default function EditorScreen() {
-	return <MarkdownDisplay>{copy}</MarkdownDisplay>;
+	const [content, setContent] = useState(template);
+	const [showPreview, setShowPreview] = useState(false);
+	return (
+		<View style={styles.page}>
+			<Stack.Screen options={{ title: 'Day 3 : Markdown' }} />
+			<View style={styles.tabsContainer}>
+				<Pressable
+					onPress={() => setShowPreview(!showPreview)}
+					style={styles.tab}>
+					<Text style={styles.tabText}>
+						{showPreview ? 'Show preview' : 'Show editor'}
+					</Text>
+				</Pressable>
+			</View>
+			{showPreview && (
+				<TextInput
+					defaultValue={content}
+					multiline
+					style={styles.input}
+					numberOfLines={20}
+					onChangeText={setContent}
+					textAlignVertical="top"
+				/>
+			)}
+			<MarkdownDisplay>{content}</MarkdownDisplay>
+		</View>
+	);
 }
+
+const styles = StyleSheet.create({
+	page: {
+		flex: 1,
+		padding: 10,
+	},
+	input: {
+		flex: 1,
+		backgroundColor: 'white',
+		fontSize: 16,
+		padding: 10,
+		borderRadius: 10,
+	},
+	tabsContainer: {
+		flexDirection: 'row',
+		gap: 10,
+	},
+	tab: {
+		flex: 1,
+		alignItems: 'center',
+		padding: 10,
+		borderRadius: 10,
+		backgroundColor: '#f0f0f0',
+		borderWidth: 1,
+		borderColor: '#e0e0e0',
+		marginBottom: 10,
+	},
+	tabText: {
+		fontFamily: 'InterBold',
+	},
+});
