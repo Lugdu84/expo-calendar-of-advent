@@ -1,14 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, FlatList } from 'react-native';
-import DayListItem from '../components/core/DayListItem';
-import {
-	useFonts,
-	AmaticSC_400Regular,
-	AmaticSC_700Bold,
-} from '@expo-google-fonts/amatic-sc';
-import { Inter_900Black } from '@expo-google-fonts/inter';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import DayListItem from '@components/core/DayListItem';
 
 const days = [...Array(24)].map((_, i) => i + 1);
 
