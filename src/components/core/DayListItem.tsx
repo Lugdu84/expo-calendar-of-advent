@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
 	text: {
 		color: '#9b4521',
 		fontSize: 70,
-		fontFamily: 'Inter',
+		fontFamily: 'AmaticBold',
 	},
 });
