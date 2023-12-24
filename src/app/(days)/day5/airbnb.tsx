@@ -1,4 +1,4 @@
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, View, Text } from 'react-native';
 import { Stack } from 'expo-router';
 import apartments from '@assets/data/appartments.json';
