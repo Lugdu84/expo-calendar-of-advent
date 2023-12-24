@@ -14,13 +14,13 @@ export default function MarkdownDisplay({ children }: PropsWithChildren) {
 
 const markdownStyles = StyleSheet.create({
 	heading1: {
-		fontSize: 40,
+		fontSize: 36,
 		fontFamily: 'InterBlack',
 		marginBottom: 5,
 		marginTop: 10,
 	},
 	heading2: {
-		fontSize: 30,
+		fontSize: 28,
 		fontFamily: 'InterBold',
 		marginBottom: 5,
 		marginTop: 10,

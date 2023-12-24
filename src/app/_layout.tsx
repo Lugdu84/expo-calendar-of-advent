@@ -1,3 +1,4 @@
+import AnimatedSpashScreen from '@/components/splash/AnimatedSpashScreen';
 import {
 	AmaticSC_400Regular,
 	AmaticSC_700Bold,
@@ -10,10 +11,13 @@ import {
 	Inter_900Black,
 } from '@expo-google-fonts/inter';
 import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 export default function RootLayout() {
+	const [appReady, appSetReady] = useState(false);
+	const [splashAnimationFinished, setSplashAnimationFinished] = useState(false);
 	const [fontLoaded, fontError] = useFonts({
 		AmaticBold: AmaticSC_700Bold,
 		Amatic: AmaticSC_400Regular,
@@ -25,21 +29,33 @@ export default function RootLayout() {
 
 	useEffect(() => {
 		if (fontLoaded || fontError) {
-			SplashScreen.hideAsync();
+			// SplashScreen.hideAsync();
+			appSetReady(true);
 		}
 	}, [fontLoaded, fontError]);
 
-	if (!fontLoaded && !fontError) {
-		return null;
+	const handleAnimationFinish = (isCancelled: boolean) => {
+		if (isCancelled) {
+			return;
+		}
+		setSplashAnimationFinished(true);
+	};
+
+	if (!splashAnimationFinished) {
+		return <AnimatedSpashScreen onAnimationFinish={handleAnimationFinish} />;
 	}
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
-			<Stack screenOptions={{}}>
-				<Stack.Screen
-					name="index"
-					options={{ title: 'DEVember' }}
-				/>
-			</Stack>
+			<Animated.View
+				style={{ flex: 1 }}
+				entering={FadeIn}>
+				<Stack screenOptions={{}}>
+					<Stack.Screen
+						name="index"
+						options={{ title: 'DEVember' }}
+					/>
+				</Stack>
+			</Animated.View>
 		</GestureHandlerRootView>
 	);
 }
