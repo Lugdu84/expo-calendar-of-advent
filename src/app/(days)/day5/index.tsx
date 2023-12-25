@@ -3,30 +3,21 @@ import { Link, Stack } from 'expo-router';
 import MarkdownDisplay from '@/components/markdown/MarkdownDisplay';
 
 const description = `
-# Day 4 : Animation Splash Screen with Lottie
+# Day 5 : AirBNB Map
 List of features :
-- Custom Splash Screen
-- Lottie animation
-- Transition between screens
+- Map
 `;
 
 export default function DayTwoScreen() {
 	return (
 		<View style={styles.page}>
-			<Stack.Screen
-				options={{ title: 'Day 4 : Animation Splash Screen with Lottie' }}
-			/>
+			<Stack.Screen options={{ title: 'Day 5 : AirBnB' }} />
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.buttonsContainer}>
 				<Link
-					href={'/day4/animation'}
+					href={'/day5/airbnb'}
 					asChild>
-					<Button title="Go to the animation" />
-				</Link>
-				<Link
-					href={'/day4/splash'}
-					asChild>
-					<Button title="Go to Splash Screen" />
+					<Button title="Go to the AirBNB Map" />
 				</Link>
 			</View>
 		</View>

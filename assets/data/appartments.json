@@ -1,0 +1,145 @@
+[
+	{
+		"id": "1",
+		"latitude": 49.8,
+		"longitude": 4.9,
+		"title": "First marker",
+		"description": "Great appartment",
+		"price": 230,
+		"numberOfStars": 4,
+		"rating": 4.2,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "2",
+		"latitude": 49.9,
+		"longitude": 4.7,
+		"title": "Second marker",
+		"description": "Great appartment",
+		"price": 189,
+		"numberOfStars": 10,
+		"rating": 4.4,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "3",
+		"latitude": 49.7,
+		"longitude": 4.8,
+		"title": "Third marker",
+		"description": "Great appartment",
+		"price": 136,
+		"numberOfStars": 2,
+		"rating": 4.1,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "4",
+		"latitude": 49.6,
+		"longitude": 4.6,
+		"title": "Fourth marker",
+		"description": "Great appartment",
+		"price": 99,
+		"numberOfStars": 5,
+		"rating": 4.3,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "5",
+		"latitude": 49.5,
+		"longitude": 4.5,
+		"title": "Fifth marker",
+		"description": "Great appartment",
+		"price": 99,
+		"numberOfStars": 5,
+		"rating": 4.3,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "6",
+		"latitude": 49.4,
+		"longitude": 4.4,
+		"title": "Sixth marker",
+		"description": "Great appartment",
+		"price": 85,
+		"numberOfStars": 3,
+		"rating": 4.0,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "7",
+		"latitude": 49.3,
+		"longitude": 4.3,
+		"title": "Seventh marker",
+		"description": "Great appartment",
+		"price": 85,
+		"numberOfStars": 3,
+		"rating": 4.0,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "8",
+		"latitude": 49.2,
+		"longitude": 4.2,
+		"title": "Eighth marker",
+		"description": "Great appartment",
+		"price": 85,
+		"numberOfStars": 3,
+		"rating": 4.0,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "9",
+		"latitude": 49.1,
+		"longitude": 4.1,
+		"title": "Ninth marker",
+		"description": "Great appartment",
+		"price": 85,
+		"numberOfStars": 3,
+		"rating": 4.0,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "10",
+		"latitude": 49.0,
+		"longitude": 4.1,
+		"title": "Tenth marker",
+		"description": "Great appartment",
+		"price": 85,
+		"numberOfStars": 3,
+		"rating": 4.0,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "11",
+		"latitude": 48.9,
+		"longitude": 40,
+		"title": "Eleventh marker",
+		"description": "Great appartment",
+		"price": 85,
+		"numberOfStars": 3,
+		"rating": 4.0,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "12",
+		"latitude": 48.8,
+		"longitude": 3.8,
+		"title": "Twelfth marker",
+		"description": "Great appartment",
+		"price": 85,
+		"numberOfStars": 3,
+		"rating": 4.0,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	},
+	{
+		"id": "13",
+		"latitude": 49.43,
+		"longitude": 3.9,
+		"title": "Thirteenth marker",
+		"description": "Great appartment",
+		"price": 85,
+		"numberOfStars": 3,
+		"rating": 4.0,
+		"image": "https://images.unsplash.com/photo-1703016445159-2d933b1196f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+	}
+]
