@@ -4,15 +4,20 @@ import { Stack } from 'expo-router';
 import apartments from '@assets/data/appartments.json';
 import CustomMarker from '@/components/Map/CustomMarker';
 import ApartmentListItem from '@/components/Map/ApartmentListItem';
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { useMemo, useState } from 'react';
-import { FlatList } from 'react-native-gesture-handler';
 
 export default function AirBnbScreen() {
 	const [selectedApartment, setSelectedApartment] = useState<Apartment | null>(
 		null
 	);
-	const snapPoints = useMemo(() => ['25%', '50%'], []);
+	const [mapRegion, setMapRegion] = useState({
+		latitude: 49.89,
+		longitude: 4.9,
+		latitudeDelta: 1,
+		longitudeDelta: 0.5,
+	});
+	const snapPoints = useMemo(() => [75, '50%', '99%'], []);
 
 	return (
 		<View style={styles.container}>
@@ -20,36 +25,38 @@ export default function AirBnbScreen() {
 			<MapView
 				provider={PROVIDER_GOOGLE}
 				style={styles.map}
-				initialRegion={{
-					latitude: 49.89,
-					longitude: 4.9,
-					latitudeDelta: 1,
-					longitudeDelta: 0.5,
-				}}>
+				region={mapRegion}>
 				{apartments.map((apartment) => (
 					<CustomMarker
 						key={apartment.id}
 						apartment={apartment}
 						onPress={() => setSelectedApartment(apartment)}
+						isSelected={selectedApartment?.id === apartment.id}
 					/>
 				))}
 			</MapView>
 			{selectedApartment && (
-				<View style={styles.selectedApartmentCard}>
-					<ApartmentListItem apartment={selectedApartment} />
-				</View>
+				<ApartmentListItem
+					apartment={selectedApartment}
+					containerStyle={{
+						position: 'absolute',
+						width: '90%',
+						bottom: +snapPoints[0] + 5,
+						alignSelf: 'center',
+					}}
+				/>
 			)}
 
 			<BottomSheet
 				// ref={bottomSheetRef}
-				index={1}
+				index={0}
 				snapPoints={snapPoints}
-				enablePanDownToClose
-				// onChange={handleSheetChanges}
+				// onChange={(index) => console.log('change', index)}
+				// onAnimate={(from, to) => console.log('animate', from, to)}
 			>
-				<View>
-					<Text>Awesome 🎉</Text>
-					<FlatList
+				<View style={{ flex: 1 }}>
+					<Text style={styles.listTitle}>Over {apartments.length} places</Text>
+					<BottomSheetFlatList
 						data={apartments}
 						contentContainerStyle={{
 							gap: 20,
@@ -78,5 +85,12 @@ const styles = StyleSheet.create({
 		width: '90%',
 		bottom: 70,
 		alignSelf: 'center',
+	},
+	listTitle: {
+		textAlign: 'center',
+		fontSize: 16,
+		fontFamily: 'InterSemiBold',
+		marginVertical: 5,
+		marginBottom: 30,
 	},
 });

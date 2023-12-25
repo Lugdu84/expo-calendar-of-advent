@@ -4,12 +4,15 @@ import { Marker } from 'react-native-maps';
 type CustomMarkerProps = {
 	apartment: Apartment;
 	onPress: () => void;
+	isSelected: boolean;
 };
 
 export default function CustomMarker({
 	apartment: { latitude, longitude, price },
 	onPress,
+	isSelected,
 }: CustomMarkerProps) {
+	const backgroundColor = isSelected ? 'green' : 'white';
 	return (
 		<Marker
 			onPress={onPress}
@@ -17,7 +20,8 @@ export default function CustomMarker({
 				latitude: latitude,
 				longitude: longitude,
 			}}>
-			<View style={styles.contentMarker}>
+			<View
+				style={[styles.contentMarker, { backgroundColor: backgroundColor }]}>
 				<Text style={styles.textContentMarker}>{price} €</Text>
 			</View>
 		</Marker>

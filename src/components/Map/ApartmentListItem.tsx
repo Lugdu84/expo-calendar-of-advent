@@ -1,15 +1,17 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, ViewStyle } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 type ApartmentListItemProps = {
 	apartment: Apartment;
+	containerStyle?: ViewStyle;
 };
 
 export default function ApartmentListItem({
 	apartment: { image, title, price, rating, numberOfStars, description },
+	containerStyle,
 }: ApartmentListItemProps) {
 	return (
-		<View style={styles.card}>
+		<View style={[styles.card, containerStyle]}>
 			<Image
 				source={{ uri: image }}
 				style={styles.image}
