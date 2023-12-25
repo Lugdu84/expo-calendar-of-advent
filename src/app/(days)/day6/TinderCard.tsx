@@ -8,7 +8,6 @@ import Animated, {
 	interpolate,
 	runOnJS,
 	useAnimatedStyle,
-	useDerivedValue,
 	useSharedValue,
 	withSpring,
 } from 'react-native-reanimated';
