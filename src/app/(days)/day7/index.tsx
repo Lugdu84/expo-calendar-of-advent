@@ -3,24 +3,22 @@ import { Link, Stack } from 'expo-router';
 import MarkdownDisplay from '@/components/markdown/MarkdownDisplay';
 
 const description = `
-# Day 6 : Tinder Swipe
+# Day 7 : Voice Memos
 List of features :
-- Swipe
-- Animation for swipe
-- React Native Gesture Handler
-- Ract Native Reanimated
+- Work with the microphone
+- Work with the audio playback
 `;
 
 export default function DayTwoScreen() {
 	return (
 		<View style={styles.page}>
-			<Stack.Screen options={{ title: 'Day 6 : Tinder Swipe' }} />
+			<Stack.Screen options={{ title: 'Day 7 : Voices Memo' }} />
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.buttonsContainer}>
 				<Link
-					href={'/day6/tinder'}
+					href={'/day7/memos'}
 					asChild>
-					<Button title="Go to the Tinder" />
+					<Button title="Go to the Voices Memos" />
 				</Link>
 			</View>
 		</View>
