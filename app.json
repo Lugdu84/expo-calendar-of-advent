@@ -29,6 +29,14 @@
 		"experiments": {
 			"tsconfigPaths": true
 		},
-		"plugins": ["expo-router"]
+		"plugins": [
+			"expo-router",
+			[
+				"expo-av",
+				{
+					"microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+				}
+			]
+		]
 	}
 }
