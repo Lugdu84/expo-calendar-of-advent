@@ -33,7 +33,6 @@ export default function WeatherScreen() {
 
 		const response = await fetch(url);
 		const data = await response.json();
-		// console.log(JSON.stringify(weatherData, null, 2));
 		setWeather(data);
 	};
 
@@ -44,7 +43,6 @@ export default function WeatherScreen() {
 		const url = `${baseUrl}forecast?lat=${latitude}&lon=${longitude}&&appid=${process.env.EXPO_PUBLIC_WEATHER_API_KEY}&units=metric&lang=fr`;
 		const response = await fetch(url);
 		const data = await response.json();
-		console.log(JSON.stringify(data, null, 2));
 		setForecast(data.list);
 	};
 
