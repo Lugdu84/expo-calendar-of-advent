@@ -105,7 +105,6 @@ export default function TinderCard({
 				/>
 
 				<LinearGradient
-					// Background Linear Gradient
 					colors={['transparent', 'rgba(0,0,0,0.8)']}
 					style={[StyleSheet.absoluteFillObject, styles.overlay]}
 				/>
