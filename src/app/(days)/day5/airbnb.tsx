@@ -23,7 +23,7 @@ export default function AirBnbScreen() {
 		<View style={styles.container}>
 			<Stack.Screen options={{ title: 'Map' }} />
 			<MapView
-				provider={PROVIDER_GOOGLE}
+				// provider={PROVIDER_GOOGLE}
 				style={styles.map}
 				region={mapRegion}>
 				{apartments.map((apartment) => (
