@@ -1,16 +1,17 @@
 import {
 	View,
-	Text,
 	StyleSheet,
-	Pressable,
 	TextInput,
 	KeyboardAvoidingView,
 	Platform,
+	Button,
 } from 'react-native';
 import { useRef, useState } from 'react';
 import { Stack } from 'expo-router';
 import { FlatList } from 'react-native-gesture-handler';
 import { Fontisto } from '@expo/vector-icons';
+import TaskListItem from '@/components/day15/TaskListItem';
+import { useTasks } from '@/hooks/useTasks';
 
 const dummyTasks: Task[] = [
 	{
@@ -41,30 +42,21 @@ const dummyTasks: Task[] = [
 ];
 
 export default function TodosScreen() {
-	const [tasks, setTasks] = useState(dummyTasks);
 	const inputRef = useRef<TextInput>(null);
-
-	const handleCheckTask = (index: number) => {
-		const newTasks = [...tasks];
-		newTasks[index].completed = !newTasks[index].completed;
-		setTasks(newTasks);
-	};
-
-	const getColorForTask = (task: Task) => {
-		return task.completed ? 'green' : 'gray';
-	};
+	const {
+		filteredTasks,
+		addTask,
+		checkTask,
+		deleteTask,
+		updateSearch,
+		updateFilterChecked,
+		filteredChecked,
+	} = useTasks(dummyTasks);
 
 	const handleAddTask = (text: string) => {
 		if (!text) return;
 		if (!inputRef.current) return;
-		const newTasks = [...tasks];
-		newTasks.push({
-			id: `${tasks.length + 1}`,
-			title: text,
-			completed: false,
-		});
-		inputRef.current.clear();
-		setTasks(newTasks);
+		addTask(text);
 	};
 
 	return (
@@ -72,23 +64,48 @@ export default function TodosScreen() {
 			style={styles.page}
 			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
 			keyboardVerticalOffset={Platform.OS === 'ios' ? 120 : 140}>
-			<Stack.Screen options={{ title: 'TODO' }} />
+			<Stack.Screen
+				options={{
+					title: 'TODO',
+					headerSearchBarOptions: {
+						hideWhenScrolling: false,
+						onChangeText(e) {
+							updateSearch(e.nativeEvent.text);
+						},
+					},
+				}}
+			/>
+
 			<FlatList
-				data={tasks}
+				ListHeaderComponent={() => (
+					<View style={{ flexDirection: 'row' }}>
+						<Button
+							color={filteredChecked === undefined ? 'green' : 'blue'}
+							title="All"
+							onPress={() => updateFilterChecked()}
+						/>
+						<Button
+							color={filteredChecked === false ? 'green' : 'blue'}
+							title="Active"
+							onPress={() => updateFilterChecked(false)}
+						/>
+						<Button
+							color={filteredChecked ? 'green' : 'blue'}
+							title="Completed"
+							onPress={() => updateFilterChecked(true)}
+						/>
+					</View>
+				)}
+				// Pour être en dessous de la searchBar
+				contentInsetAdjustmentBehavior="automatic"
+				data={filteredTasks}
 				contentContainerStyle={{ gap: 10, padding: 10 }}
 				renderItem={({ item, index }) => (
-					<Pressable
-						style={styles.taskContainer}
-						onPress={() => handleCheckTask(index)}>
-						<Fontisto
-							name={item.completed ? 'checkbox-active' : 'checkbox-passive'}
-							size={22}
-							color={getColorForTask(item)}
-						/>
-						<Text style={[styles.taskTitle, { color: getColorForTask(item) }]}>
-							{item.title}
-						</Text>
-					</Pressable>
+					<TaskListItem
+						task={item}
+						onChangeCheck={() => checkTask(index)}
+						onDelete={() => deleteTask(index)}
+					/>
 				)}
 				ListFooterComponent={() => (
 					<View style={styles.taskContainer}>
