@@ -3,7 +3,7 @@ import { Link, Stack } from 'expo-router';
 import MarkdownDisplay from '@/components/markdown/MarkdownDisplay';
 
 const description = `
-# Day 15 : Todo App
+# Day 17 : Todo App with Zustand
 List of features :
 - Create a todo
 - Delete a todo
@@ -14,11 +14,13 @@ List of features :
 export default function DayTwoScreen() {
 	return (
 		<View style={styles.page}>
-			<Stack.Screen options={{ title: 'Day 15 : ToDo App' }} />
+			<Stack.Screen
+				options={{ title: 'Day 17 : Refactor ToDo App with zustand' }}
+			/>
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.buttonsContainer}>
 				<Link
-					href={'/day15/todos'}
+					href={'/day17/todos'}
 					asChild>
 					<Button title="Go to the ToDo App" />
 				</Link>
