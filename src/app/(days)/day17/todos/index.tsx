@@ -6,25 +6,23 @@ import {
 	Platform,
 	Button,
 } from 'react-native';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Stack } from 'expo-router';
 import { FlatList } from 'react-native-gesture-handler';
 import { Fontisto } from '@expo/vector-icons';
-import TaskListItem from '@/components/day15/TaskListItem';
-import { useTasks } from '@/hooks/useTasks';
-import { dummyTasks } from '@/app/fixtures/dummyTasks';
+import TaskListItem from '@/components/day17/TaskListItem';
+import { useTasksStore } from '@/stores/TaskStore';
 
 export default function TodosScreen() {
 	const inputRef = useRef<TextInput>(null);
-	const {
-		filteredTasks,
-		addTask,
-		checkTask,
-		deleteTask,
-		updateSearch,
-		updateFilterChecked,
-		filteredChecked,
-	} = useTasks(dummyTasks);
+	const tasks = useTasksStore((state) => state.tasks);
+	const filteredChecked = useTasksStore((state) => state.filteredChecked);
+	const updateFilterChecked = useTasksStore(
+		(state) => state.updateFilterChecked
+	);
+	const filteredTasks = useTasksStore((state) => state.filteredTasks());
+	const addTask = useTasksStore((state) => state.addTask);
+	const updateSearch = useTasksStore((state) => state.updateSearch);
 
 	const handleAddTask = (text: string) => {
 		if (!text) return;
@@ -73,13 +71,7 @@ export default function TodosScreen() {
 				contentInsetAdjustmentBehavior="automatic"
 				data={filteredTasks}
 				contentContainerStyle={{ gap: 10, padding: 10 }}
-				renderItem={({ item, index }) => (
-					<TaskListItem
-						task={item}
-						onChangeCheck={() => checkTask(index)}
-						onDelete={() => deleteTask(index)}
-					/>
-				)}
+				renderItem={({ item, index }) => <TaskListItem task={item} />}
 				ListFooterComponent={() => (
 					<View style={styles.taskContainer}>
 						<Fontisto
