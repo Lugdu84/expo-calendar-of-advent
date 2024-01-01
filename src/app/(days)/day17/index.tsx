@@ -14,9 +14,7 @@ List of features :
 export default function DayTwoScreen() {
 	return (
 		<View style={styles.page}>
-			<Stack.Screen
-				options={{ title: 'Day 17 : Refactor ToDo App with zustand' }}
-			/>
+			<Stack.Screen options={{ title: 'Day 17 : ToDo App with zustand' }} />
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.buttonsContainer}>
 				<Link
