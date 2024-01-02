@@ -15,6 +15,12 @@ import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
+import { vexo } from 'vexo-analytics';
+
+if (!__DEV__) {
+	vexo(process.env.EXPO_PUBLIC_VEXO_API_KEY!);
+}
+
 export default function RootLayout() {
 	const [appReady, appSetReady] = useState(false);
 	const [splashAnimationFinished, setSplashAnimationFinished] = useState(false);

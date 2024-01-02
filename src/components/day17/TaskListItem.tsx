@@ -3,6 +3,7 @@ import { Fontisto } from '@expo/vector-icons';
 import { Swipeable } from 'react-native-gesture-handler';
 import ReAnimated, { FadeInRight } from 'react-native-reanimated';
 import { useTasksStore } from '@/stores/TaskStore';
+import { customEvent } from 'vexo-analytics';
 
 type TaskListItemProps = {
 	task: Task;
@@ -52,6 +53,11 @@ export default function TaskListItem({
 
 	const handleChangeCheck = () => {
 		checkTask(id);
+		customEvent('task_checked', {
+			task_id: id,
+			task_title: title,
+			task_completed: completed,
+		});
 	};
 	return (
 		<ReAnimated.View entering={FadeInRight}>
