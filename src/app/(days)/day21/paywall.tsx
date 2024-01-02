@@ -1,6 +1,8 @@
+import { Stack } from 'expo-router';
 import { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Purchases from 'react-native-purchases';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function PaywallScreen() {
 	useEffect(() => {
@@ -22,8 +24,59 @@ export default function PaywallScreen() {
 		fetchOfferings();
 	}, []);
 	return (
-		<View>
-			<Text>PaywallScreen</Text>
+		<View style={styles.page}>
+			<Stack.Screen options={{ headerShown: false }} />
+			<SafeAreaView style={styles.container}>
+				<Text style={styles.title}>Unlock Pro Access</Text>
+				<Text style={styles.subtitle}>All prenium features</Text>
+				<View style={styles.packages}>
+					<View style={styles.package}>
+						<Text style={styles.packageDuration}>1 month</Text>
+						<Text style={styles.packagePrice}>9.99 €</Text>
+					</View>
+					<View style={styles.package}>
+						<Text style={styles.packageDuration}>1 month</Text>
+						<Text style={styles.packagePrice}>9.99 €</Text>
+					</View>
+				</View>
+			</SafeAreaView>
 		</View>
 	);
 }
+
+const styles = StyleSheet.create({
+	page: { backgroundColor: '#ef4951', flex: 1 },
+	container: {
+		flex: 1,
+		padding: 10,
+		alignItems: 'center',
+	},
+	title: {
+		fontSize: 24,
+		marginVertical: 20,
+		color: 'white',
+		fontFamily: 'InterBold',
+	},
+	subtitle: {
+		fontSize: 16,
+		color: 'gainsboro',
+	},
+	packages: {
+		flexDirection: 'row',
+		gap: 10,
+		marginTop: 40,
+	},
+	package: {
+		backgroundColor: 'white',
+		alignItems: 'center',
+		padding: 10,
+		borderRadius: 10,
+	},
+	packageDuration: {
+		fontFamily: 'Inter',
+	},
+	packagePrice: {
+		fontSize: 24,
+		fontFamily: 'InterBold',
+	},
+});
