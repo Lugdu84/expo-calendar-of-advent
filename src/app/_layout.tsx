@@ -14,8 +14,12 @@ import { SplashScreen, Stack } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Animated, { FadeIn } from 'react-native-reanimated';
+import Purchases from 'react-native-purchases';
+import { Platform } from 'react-native';
 
 import { vexo } from 'vexo-analytics';
+
+const REVENUECAT_IOS_KEY = process.env.EXPO_PUBLIC_REVENUECAT_IOS_KEY;
 
 if (!__DEV__) {
 	vexo(process.env.EXPO_PUBLIC_VEXO_API_KEY!);
@@ -32,6 +36,12 @@ export default function RootLayout() {
 		InterSemiBold: Inter_600SemiBold,
 		InterBlack: Inter_900Black,
 	});
+
+	useEffect(() => {
+		if (Platform.OS === 'ios' && REVENUECAT_IOS_KEY) {
+			Purchases.configure({ apiKey: REVENUECAT_IOS_KEY });
+		}
+	}, []);
 
 	useEffect(() => {
 		if (fontLoaded || fontError) {
