@@ -25,8 +25,6 @@ export default function ProScreen() {
 		checkSubscription();
 	}, []);
 
-	console.log(isSubscribed);
-
 	if (isSubscribed === undefined) {
 		return <ActivityIndicator />;
 	}
