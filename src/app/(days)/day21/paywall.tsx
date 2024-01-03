@@ -1,10 +1,12 @@
+import Package from '@/components/day21/Package';
 import { Stack } from 'expo-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Purchases from 'react-native-purchases';
+import Purchases, { PurchasesPackage } from 'react-native-purchases';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function PaywallScreen() {
+	const [offerings, setOfferings] = useState<PurchasesPackage[]>([]);
 	useEffect(() => {
 		const fetchOfferings = async () => {
 			try {
@@ -14,15 +16,21 @@ export default function PaywallScreen() {
 					offerings.current !== null &&
 					offerings.current.availablePackages.length !== 0
 				) {
-					console.log(
-						JSON.stringify(offerings.current.availablePackages, null, 2)
-					);
-					// Display packages for sale
+					setOfferings(offerings.current.availablePackages);
 				}
 			} catch (e) {}
 		};
 		fetchOfferings();
 	}, []);
+
+	if (!offerings) {
+		return (
+			<View>
+				<Text>Fail to fetch purchases...</Text>
+			</View>
+		);
+	}
+
 	return (
 		<View style={styles.page}>
 			<Stack.Screen options={{ headerShown: false }} />
@@ -30,14 +38,12 @@ export default function PaywallScreen() {
 				<Text style={styles.title}>Unlock Pro Access</Text>
 				<Text style={styles.subtitle}>All prenium features</Text>
 				<View style={styles.packages}>
-					<View style={styles.package}>
-						<Text style={styles.packageDuration}>1 month</Text>
-						<Text style={styles.packagePrice}>9.99 €</Text>
-					</View>
-					<View style={styles.package}>
-						<Text style={styles.packageDuration}>1 month</Text>
-						<Text style={styles.packagePrice}>9.99 €</Text>
-					</View>
+					{offerings.map((offer) => (
+						<Package
+							key={offer.identifier}
+							offering={offer}
+						/>
+					))}
 				</View>
 			</SafeAreaView>
 		</View>
@@ -65,18 +71,5 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		gap: 10,
 		marginTop: 40,
-	},
-	package: {
-		backgroundColor: 'white',
-		alignItems: 'center',
-		padding: 10,
-		borderRadius: 10,
-	},
-	packageDuration: {
-		fontFamily: 'Inter',
-	},
-	packagePrice: {
-		fontSize: 24,
-		fontFamily: 'InterBold',
 	},
 });
