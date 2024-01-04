@@ -1,8 +1,6 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
 import { useRef } from 'react';
-import { database } from '@/database/watermelon';
-import Task from '@/model/Task';
 import { addTask } from '@/database/tasks';
 
 export default function FooterList() {

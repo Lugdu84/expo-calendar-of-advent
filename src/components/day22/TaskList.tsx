@@ -4,16 +4,16 @@ import TaskListItem from './TaskListItem';
 import { withObservables } from '@nozbe/watermelondb/react';
 import { database } from '@/database/watermelon';
 import Task from '@/model/Task';
-import { Model } from '@nozbe/watermelondb';
+import { Model, Q } from '@nozbe/watermelondb';
 import { FlatList } from 'react-native-gesture-handler';
+import { useState } from 'react';
+import { useTasksStore } from '@/stores/TaskStore';
 
 const enhance = withObservables(['tasks'], ({ tasks }) => {
 	const observable = ['id', 'title', 'completed'];
+	const query = Q.where('completed', true);
 	return {
-		tasks: database.collections
-			.get('tasks')
-			.query()
-			.observeWithColumns(observable),
+		tasks: database.get('tasks').query().observeWithColumns(observable),
 	};
 });
 
@@ -22,24 +22,28 @@ type TaskListProps = {
 };
 
 function TaskList({ tasks }: TaskListProps) {
+	const filteredChecked = useTasksStore((state) => state.filteredChecked);
+	const updatedFilteredChecked = useTasksStore(
+		(state) => state.updateFilterChecked
+	);
 	return (
 		<FlatList
 			ListHeaderComponent={() => (
 				<View style={{ flexDirection: 'row' }}>
 					<Button
-						// color={filteredChecked === undefined ? 'green' : 'blue'}
+						color={filteredChecked === undefined ? 'green' : 'blue'}
 						title="All"
-						// onPress={() => updateFilterChecked()}
+						onPress={() => updatedFilteredChecked(undefined)}
 					/>
 					<Button
-						// color={filteredChecked === false ? 'green' : 'blue'}
+						color={filteredChecked === false ? 'green' : 'blue'}
 						title="Active"
-						// onPress={() => updateFilterChecked(false)}
+						onPress={() => updatedFilteredChecked(false)}
 					/>
 					<Button
-						// color={filteredChecked ? 'green' : 'blue'}
+						color={filteredChecked ? 'green' : 'blue'}
 						title="Completed"
-						// onPress={() => updateFilterChecked(true)}
+						onPress={() => updatedFilteredChecked(true)}
 					/>
 				</View>
 			)}
