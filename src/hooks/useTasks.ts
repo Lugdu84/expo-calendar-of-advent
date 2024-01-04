@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-export const useTasks = (initialTasks?: Task[]) => {
-	const [tasks, setTasks] = useState<Task[]>(initialTasks || []);
+export const useTasks = (initialTasks?: TypeTask[]) => {
+	const [tasks, setTasks] = useState<TypeTask[]>(initialTasks || []);
 	const [search, setSearch] = useState<string>('');
 	const [filteredChecked, setFilteredChecked] = useState<boolean | undefined>(
 		undefined
