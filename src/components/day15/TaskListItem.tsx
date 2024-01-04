@@ -4,7 +4,7 @@ import { Swipeable } from 'react-native-gesture-handler';
 import ReAnimated, { FadeInRight } from 'react-native-reanimated';
 
 type TaskListItemProps = {
-	task: Task;
+	task: TypeTask;
 	onChangeCheck: () => void;
 	onDelete: () => void;
 };

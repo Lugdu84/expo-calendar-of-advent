@@ -16,7 +16,7 @@ export default function DayTwoScreen() {
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.buttonsContainer}>
 				<Link
-					href={'/day14/notifications'}
+					href={'/day14/notifications/'}
 					asChild>
 					<Button title="Go to the Notifications" />
 				</Link>

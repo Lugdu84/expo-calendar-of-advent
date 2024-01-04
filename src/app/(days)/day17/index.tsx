@@ -18,7 +18,7 @@ export default function DayTwoScreen() {
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.buttonsContainer}>
 				<Link
-					href={'/day17/todos'}
+					href={'/day17/todos/'}
 					asChild>
 					<Button title="Go to the ToDo App" />
 				</Link>

@@ -2,11 +2,12 @@ import { Text, Pressable, StyleSheet, Animated } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
 import { Swipeable } from 'react-native-gesture-handler';
 import ReAnimated, { FadeInRight } from 'react-native-reanimated';
-import { useTasksStore } from '@/stores/TaskStore';
-import { customEvent } from 'vexo-analytics';
+import Task from '@/model/Task';
+import { database } from '@/database/watermelon';
+import { checkTask, deleteTask } from '@/database/tasks';
 
 type TaskListItemProps = {
-	task: TypeTask;
+	task: Task;
 };
 
 type RightActionsProps = {
@@ -18,9 +19,8 @@ type RightActionsProps = {
 const AnimatedView = Animated.createAnimatedComponent(Pressable);
 
 const RightActions = ({ progress, dragX, id }: RightActionsProps) => {
-	const deleteTask = useTasksStore((state) => state.deleteTask);
-	const handleDelete = () => {
-		deleteTask(id);
+	const handleDelete = async () => {
+		await deleteTask(id);
 	};
 	const trans = progress.interpolate({
 		inputRange: [0, 1],
@@ -49,15 +49,15 @@ export default function TaskListItem({
 }: TaskListItemProps) {
 	const color = completed ? 'green' : 'gray';
 
-	const checkTask = useTasksStore((state) => state.checkTask);
+	console.log('TaskListItem', id, title, completed);
 
-	const handleChangeCheck = () => {
-		checkTask(id);
-		customEvent('task_checked', {
-			task_id: id,
-			task_title: title,
-			task_completed: completed,
-		});
+	const handleChangeCheck = async () => {
+		await checkTask(id);
+		// customEvent('task_checked', {
+		// 	task_id: id,
+		// 	task_title: title,
+		// 	task_completed: completed,
+		// });
 	};
 	return (
 		<ReAnimated.View entering={FadeInRight}>

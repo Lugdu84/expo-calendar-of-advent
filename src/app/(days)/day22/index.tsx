@@ -3,24 +3,21 @@ import { Link, Stack } from 'expo-router';
 import MarkdownDisplay from '@/components/markdown/MarkdownDisplay';
 
 const description = `
-# Day 15 : Todo App
+# Day 22 : Offline Mode
 List of features :
-- Create a todo
-- Delete a todo
-- Update a todo
-- Filter todos
+- WatermelonDB
 `;
 
 export default function DayTwoScreen() {
 	return (
 		<View style={styles.page}>
-			<Stack.Screen options={{ title: 'Day 15 : ToDo App' }} />
+			<Stack.Screen options={{ title: 'Day 22 : Offline Mode' }} />
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.buttonsContainer}>
 				<Link
-					href={'/day15/todos/'}
+					href={'/day22/local/'}
 					asChild>
-					<Button title="Go to the ToDo App" />
+					<Button title="Go to the Offline Mode" />
 				</Link>
 			</View>
 		</View>

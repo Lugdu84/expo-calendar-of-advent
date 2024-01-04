@@ -16,7 +16,7 @@ export default function DayTwoScreen() {
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.buttonsContainer}>
 				<Link
-					href={'/day10/protected'}
+					href={'/day10/protected/'}
 					asChild>
 					<Button title="Go to the Protected Page" />
 				</Link>
